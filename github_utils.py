@@ -1,5 +1,6 @@
 import base64
 import requests
+import os
 
 def upload_file_to_github(file_path, folder_path, repo_name, github_token):
     """
