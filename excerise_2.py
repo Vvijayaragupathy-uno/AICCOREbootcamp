@@ -4,6 +4,10 @@ import streamlit as st
 from groq import Groq
 import os
 from database import UserDatabase
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+API_KEY = os.getenv("API_KEY")
+
 
 def exercise2():
     # Initialize the user database
@@ -281,7 +285,7 @@ def exercise2():
                             st.markdown(f"### {technique} Prompt")  # Technique Name in Bold
 
                             # Initialize the Groq client
-                            client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+                            client = Groq(api_key=GROQ_API_KEY)
 
                             # Create a complete prompt based on the technique
                             full_prompt = ""
@@ -444,7 +448,7 @@ def exercise2():
                         st.markdown(f"### {model}")  # Model Name in Bold
 
                         # Initialize the Groq client
-                        client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+                        client = Groq(api_key=GROQ_API_KEY)
 
                         # Create a complete prompt based on the selected technique and scenario
                         full_prompt = ""
