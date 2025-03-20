@@ -1,0 +1,15 @@
+streamlit
+PyGithub
+pandas
+requests
+beautifulsoup4
+PyMuPDF
+requests
+together 
+faiss-cpu  
+pydantic 
+typing-extensions
+matplotlib
+seaborn
+groq
+
