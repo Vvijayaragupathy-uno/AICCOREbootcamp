@@ -1,8 +1,12 @@
 import streamlit as st
 from groq import Groq
+from dotenv import load_dotenv
 import os
 from database import UserDatabase
-
+load_dotenv()
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+API_KEY = os.getenv("API_KEY")
 def exercise1():
     # Initialize the user database
     user_db = UserDatabase()
@@ -261,7 +265,7 @@ def exercise1():
                             st.markdown(f"### {model}")  # Model Name in Bold
 
                             # Initialize the Groq client
-                            client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+                            client = Groq(api_key=GROQ_API_KEY)
 
                             # Prepare the initial prompt (uploaded document)
                             if st.session_state.uploaded_file_content:
