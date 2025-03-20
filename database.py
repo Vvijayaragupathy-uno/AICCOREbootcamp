@@ -3,7 +3,15 @@ import csv
 import pandas as pd
 import hashlib
 from datetime import datetime
-from github_utils import upload_file_to_github  # Import the GitHub utility function
+from github_utils import upload_file_to_github 
+from dotenv import load_dotenv
+import streamlit as st
+
+# Load environment variables from .env file
+load_dotenv()
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+API_KEY = os.getenv("API_KEY")
 
 class UserDatabase:
     def __init__(self):
@@ -73,9 +81,9 @@ class UserDatabase:
             df.to_csv(filename, index=False)
             
             # Upload the file to GitHub
-            GITHUB_TOKEN = st.secrets["API_KEY"]
-            REPO_NAME = "Vvijayaragupathy-uno/AI-CCORE"  # Replace with your repo name
-            LLM_FOLDER = "Exercise"  # Folder in GitHub where files will be uploaded
+            GITHUB_TOKEN = API_KEY
+            REPO_NAME = "Vvijayaragupathy-uno/AI-CCORE"  
+            LLM_FOLDER = "Exercise"  
             result_message = upload_file_to_github(filename, LLM_FOLDER, REPO_NAME, GITHUB_TOKEN)
             
             if "successfully" in result_message.lower():
