@@ -3,6 +3,7 @@ import csv
 import pandas as pd
 import hashlib
 from datetime import datetime
+from github_utils import upload_file_to_github  # Import the GitHub utility function
 
 class UserDatabase:
     def __init__(self):
@@ -46,7 +47,7 @@ class UserDatabase:
             return False
     
     def save_user_interaction(self, username, question, model_responses):
-        """Save user interaction to a CSV file"""
+        """Save user interaction to a CSV file and upload to GitHub"""
         try:
             # Create a folder for the user if it doesn't exist
             user_folder = f"Exercise/{username}"
@@ -70,6 +71,17 @@ class UserDatabase:
             # Create dataframe and save to CSV
             df = pd.DataFrame(data)
             df.to_csv(filename, index=False)
+            
+            # Upload the file to GitHub
+            GITHUB_TOKEN = st.secrets["API_KEY"]
+            REPO_NAME = "Vvijayaragupathy-uno/AI-CCORE"  # Replace with your repo name
+            LLM_FOLDER = "Exercise"  # Folder in GitHub where files will be uploaded
+            result_message = upload_file_to_github(filename, LLM_FOLDER, REPO_NAME, GITHUB_TOKEN)
+            
+            if "successfully" in result_message.lower():
+                st.sidebar.success(f"Responses saved to {filename} and uploaded to GitHub.")
+            else:
+                st.sidebar.error(f"Failed to upload to GitHub: {result_message}")
             
             return filename
         except Exception as e:
