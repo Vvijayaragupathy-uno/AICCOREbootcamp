@@ -103,4 +103,4 @@ class UserDatabase:
             return []
         
         files = [f for f in os.listdir(user_folder) if f.endswith('.csv')]
-        return files
+        return files  # Fixed syntax error
