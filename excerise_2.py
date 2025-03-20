@@ -4,6 +4,10 @@ import streamlit as st
 from groq import Groq
 import os
 from database import UserDatabase
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 API_KEY = os.getenv("API_KEY")
