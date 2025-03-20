@@ -12,4 +12,4 @@ typing-extensions
 matplotlib
 seaborn
 groq
-
+python-dotenv
