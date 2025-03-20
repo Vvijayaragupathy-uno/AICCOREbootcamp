@@ -82,7 +82,7 @@ class UserDatabase:
             
             # Upload the file to GitHub
             GITHUB_TOKEN = API_KEY
-            REPO_NAME = "Vvijayaragupathy-uno/AI-CCORE"  
+            REPO_NAME = "Vvijayaragupathy-uno/AICCOREbootcamp"  
             LLM_FOLDER = "Exercise"  
             result_message = upload_file_to_github(filename, LLM_FOLDER, REPO_NAME, GITHUB_TOKEN)
             
